@@ -8,9 +8,23 @@
 
 import UIKit
 
-class FirstViewController: UIViewController {
-
+class FirstViewController: UIViewController,CFShareCircleViewDelegate{
+    
+    var shareCircleView:CFShareCircleView!
+    
+    @IBAction func touch(sender: AnyObject) {
+        shareCircleView.show()
+    }
+    
+    func shareCircleView(aShareCircleView: CFShareCircleView!, didSelectSharer sharer: CFSharer!) {
+        println("selected : \(sharer.name)")
+    }
+    
     override func viewDidLoad() {
+        
+        shareCircleView = CFShareCircleView(frame: self.view.frame)
+        shareCircleView.delegate = self
+        self.view.addSubview(shareCircleView)
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
     }
