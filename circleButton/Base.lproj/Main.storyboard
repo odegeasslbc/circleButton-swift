@@ -16,7 +16,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRj-Xb-e3R">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bRj-Xb-e3R">
                                 <rect key="frame" x="499" y="479" width="46" height="30"/>
                                 <state key="normal" title="Button">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -25,14 +25,27 @@
                                     <action selector="touch:" destination="9pv-A4-QxB" eventType="touchDown" id="5el-Fe-yXm"/>
                                 </connections>
                             </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="GYh-lG-OaJ">
+                                <rect key="frame" x="500" y="450" width="50" height="50"/>
+                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="HbB-7f-nMs"/>
+                                    <constraint firstAttribute="width" constant="50" id="pEE-UB-mti"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="GYh-lG-OaJ" secondAttribute="trailing" constant="50" id="5mI-Jf-1Ce"/>
+                            <constraint firstAttribute="bottom" secondItem="GYh-lG-OaJ" secondAttribute="bottom" constant="100" id="a4H-IL-0SQ"/>
                             <constraint firstAttribute="bottom" secondItem="bRj-Xb-e3R" secondAttribute="bottom" constant="91" id="gnb-lR-SlT"/>
                             <constraint firstAttribute="trailing" secondItem="bRj-Xb-e3R" secondAttribute="trailing" constant="55" id="tk3-MT-N73"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <connections>
+                        <outlet property="panView" destination="GYh-lG-OaJ" id="3jo-da-n0z"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>

@@ -204,17 +204,19 @@
     _sharingOptionsView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     
     // Add the label.
-    UILabel *sharingOptionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _sharingOptionsView.frame.size.width, 85.0f)];
+    UILabel *sharingOptionsLabel = [[UILabel alloc] initWithFrame:CGRectMake(0.0f, 0.0f, _sharingOptionsView.frame.size.width, 300.0f)];
     sharingOptionsLabel.autoresizingMask = UIViewAutoresizingFlexibleWidth;
     sharingOptionsLabel.text = @"Sharing Options";
-    sharingOptionsLabel.textAlignment = NSTextAlignmentCenter;
+    sharingOptionsLabel.textAlignment = NSTextAlignmentCenter ;
     sharingOptionsLabel.textColor = [UIColor whiteColor];
     sharingOptionsLabel.font = [UIFont fontWithName:@"HelveticaNeue-Regular" size:15.0f];
-    sharingOptionsLabel.backgroundColor = [UIColor colorWithRed:47.0/255.0 green:47.0/255.0 blue:47.0/255.0 alpha:1.0];
+    sharingOptionsLabel.backgroundColor = [UIColor colorWithRed:55.0/255.0 green:55.0/255.0 blue:55.0/255.0 alpha:1.0];
+
+    sharingOptionsLabel.opaque = NO;
     [_sharingOptionsView addSubview:sharingOptionsLabel];
     
     // Add table view.
-    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 70.0f, _sharingOptionsView.frame.size.width, _sharingOptionsView.frame.size.height)];
+    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0.0f, 175.0f, _sharingOptionsView.frame.size.width, _sharingOptionsView.frame.size.height)];
     tableView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     tableView.delegate = self;
     tableView.dataSource = self;
@@ -224,19 +226,23 @@
     
     // Add the close button.
     UIButton *closeButton = [UIButton buttonWithType:UIButtonTypeCustom];
-    closeButton.frame = CGRectMake(_sharingOptionsView.frame.size.width - 45.f,25.0f,45.0f,45.0f);
+    closeButton.frame = CGRectMake(_sharingOptionsView.frame.size.width - 45.f,130.0f,45.0f,45.0f);
     closeButton.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin;
+    
     // Create an image for the button when highlighted.
     CGRect rect = CGRectMake(0.0f, 0.0f, 45.0f, 45.0f);
     UIImage *closeButtonImage = [UIImage imageNamed:@"close.png"];
+    
+    //closeButtonImage.scale = 1.5;
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0f);
     CGContextRef context = UIGraphicsGetCurrentContext();    
-    CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:35.0/255.0 green:35.0/255.0 blue:35.0/255.0 alpha:1.0] CGColor]);
+    CGContextSetFillColorWithColor(context, [[UIColor colorWithRed:35.0/255.0 green:35.0/255.0 blue:35.0/255.0 alpha:0.5] CGColor]);
     CGContextFillRect(context, rect);
     [closeButtonImage drawInRect:CGRectMake(15.0f,15.0f,closeButtonImage.size.width,closeButtonImage.size.height) blendMode:kCGBlendModeNormal alpha:1.0];
     UIImage *highlightedButtonImage = UIGraphicsGetImageFromCurrentImageContext();
     UIGraphicsEndImageContext();
     [closeButton setBackgroundImage:highlightedButtonImage forState:UIControlStateHighlighted];
+    
     // Create the normal image for the button.
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, 0.0f);
     UIGraphicsGetCurrentContext();
