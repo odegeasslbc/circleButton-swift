@@ -25,8 +25,9 @@
  Initialize the share circle with a custom list of sharers.
   */
 - (id)initWithFrame:(CGRect) frame sharers:(NSArray *)sharers;
-
+- (id)initWithFrame:(CGRect) frame location:(CGPoint)location;
 /**
+ 
  Animates the share circle into view. 
  */
 - (void)show;

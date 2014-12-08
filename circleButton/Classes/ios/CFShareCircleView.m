@@ -23,6 +23,9 @@
 @end
 
 @implementation CFShareCircleView{
+    CGFloat X;
+    CGFloat Y;
+    CGPoint _location;
     CGPoint _currentPosition, _origin;
     BOOL _dragging, _circleIsVisible, _sharingOptionsIsVisible;
     CALayer *_closeButtonLayer, *_overlayLayer;
@@ -39,12 +42,24 @@
 #define IMAGE_SIZE 30
 #define TOUCH_SIZE 50
 #define MAX_VISIBLE_SHARERS 6
-#define X 90
-#define Y 190
+//#define X 0
+//#define Y 0
 
 @synthesize delegate = _delegate;
 
 - (id)initWithFrame:(CGRect)frame {
+
+    self = [super initWithFrame:frame];
+    if (self) {
+        _sharers = [[NSMutableArray alloc] initWithObjects: [CFSharer pinterest], [CFSharer googleDrive], [CFSharer twitter], [CFSharer facebook], [CFSharer evernote], [CFSharer dropbox], [CFSharer mail], [CFSharer photoLibrary], nil];
+        [self setUpCircleLayers];
+    }
+    return self;
+}
+
+- (id)initWithFrame:(CGRect)frame location:(CGPoint )location {
+    X = location.x;
+    Y = location.y;
     self = [super initWithFrame:frame];
     if (self) {
         _sharers = [[NSMutableArray alloc] initWithObjects: [CFSharer pinterest], [CFSharer googleDrive], [CFSharer twitter], [CFSharer facebook], [CFSharer evernote], [CFSharer dropbox], [CFSharer mail], [CFSharer photoLibrary], nil];
@@ -157,7 +172,7 @@
     CGPathAddEllipseInRect(circularPath, NULL, CGRectMake(0, 0, TOUCH_SIZE, TOUCH_SIZE));
     _touchLayer.path = circularPath;
     CGPathRelease(circularPath);
-    _touchLayer.position = CGPointMake(CGRectGetMidX(self.layer.bounds), CGRectGetMidY(self.layer   .bounds));
+    _touchLayer.position = CGPointMake(CGRectGetMidX(self.layer.bounds), CGRectGetMidY(self.layer.bounds));
     _touchLayer.opacity = 0.0;
     _touchLayer.fillColor = [UIColor clearColor].CGColor;
     _touchLayer.strokeColor = [UIColor blackColor].CGColor;
@@ -566,6 +581,7 @@
 
 - (void)show {
     self.hidden = NO;
+
     // Set up the animation for the background layer to come in.
     CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"position"];
     
