@@ -52,7 +52,7 @@ class SecondViewController: UIViewController,UITabBarDelegate {
         textLabel.textAlignment = NSTextAlignment.Center
         self.view.addSubview(textLabel)
         //self.tabBarController?.tabBar.delegate = self
-        fiv = storyBoard.instantiateViewControllerWithIdentifier("first") as UIViewController
+        fiv = storyBoard.instantiateViewControllerWithIdentifier("first") as! UIViewController
                 
         swipeUpRec.direction = UISwipeGestureRecognizerDirection.Up
         swipeDownRec.direction = UISwipeGestureRecognizerDirection.Down
